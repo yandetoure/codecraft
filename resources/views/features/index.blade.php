@@ -27,18 +27,33 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-20 relative z-10">
-        <!-- Filter Tabs (Visual Only for now) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-20 relative z-10" x-data="{ activeFilter: 'all' }">
+        <!-- Filter Tabs -->
         <div class="flex flex-wrap justify-center gap-4 mb-16 animate-fade-in" style="animation-delay: 0.2s;">
-            <button
-                class="px-6 py-2 rounded-full bg-white text-primary-600 font-semibold shadow-lg shadow-primary-900/5 ring-2 ring-primary-100 transition hover:scale-105">Tout
-                voir</button>
-            <button
-                class="px-6 py-2 rounded-full bg-white/5 backdrop-blur-md text-slate-600 font-medium hover:bg-white hover:text-primary-600 transition hover:scale-105 border border-slate-200/50">Technique</button>
-            <button
-                class="px-6 py-2 rounded-full bg-white/5 backdrop-blur-md text-slate-600 font-medium hover:bg-white hover:text-primary-600 transition hover:scale-105 border border-slate-200/50">Marketing</button>
-            <button
-                class="px-6 py-2 rounded-full bg-white/5 backdrop-blur-md text-slate-600 font-medium hover:bg-white hover:text-primary-600 transition hover:scale-105 border border-slate-200/50">Support</button>
+            <button 
+                @click="activeFilter = 'all'"
+                :class="activeFilter === 'all' ? 'bg-white text-primary-600 shadow-lg shadow-primary-900/5 ring-2 ring-primary-100' : 'bg-white/5 backdrop-blur-md text-slate-600 hover:bg-white hover:text-primary-600 border border-slate-200/50'"
+                class="px-6 py-2 rounded-full font-semibold transition hover:scale-105">
+                Tout voir
+            </button>
+            <button 
+                @click="activeFilter = 'technical'"
+                :class="activeFilter === 'technical' ? 'bg-white text-primary-600 shadow-lg shadow-primary-900/5 ring-2 ring-primary-100' : 'bg-white/5 backdrop-blur-md text-slate-600 hover:bg-white hover:text-primary-600 border border-slate-200/50'"
+                class="px-6 py-2 rounded-full font-semibold transition hover:scale-105">
+                Technique
+            </button>
+            <button 
+                 @click="activeFilter = 'marketing'"
+                 :class="activeFilter === 'marketing' ? 'bg-white text-primary-600 shadow-lg shadow-primary-900/5 ring-2 ring-primary-100' : 'bg-white/5 backdrop-blur-md text-slate-600 hover:bg-white hover:text-primary-600 border border-slate-200/50'"
+                class="px-6 py-2 rounded-full font-semibold transition hover:scale-105">
+                Marketing
+            </button>
+            <button 
+                @click="activeFilter = 'support'"
+                :class="activeFilter === 'support' ? 'bg-white text-primary-600 shadow-lg shadow-primary-900/5 ring-2 ring-primary-100' : 'bg-white/5 backdrop-blur-md text-slate-600 hover:bg-white hover:text-primary-600 border border-slate-200/50'"
+                class="px-6 py-2 rounded-full font-semibold transition hover:scale-105">
+                Support
+            </button>
         </div>
 
         @php
@@ -52,7 +67,7 @@
 
         @foreach($types as $key => $meta)
             @if(isset($groupedFeatures[$key]))
-                <div class="mb-24">
+                <div class="mb-24" x-show="activeFilter === 'all' || activeFilter === '{{ $key }}'" x-transition.duration.300ms>
                     <div class="flex items-center gap-4 mb-10">
                         <div class="p-3 rounded-2xl bg-gradient-to-br {{ $meta['color'] }} shadow-lg text-white">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
