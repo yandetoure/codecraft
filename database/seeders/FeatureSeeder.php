@@ -20,7 +20,9 @@ class FeatureSeeder extends Seeder
             $this->getShowcaseFeatures(),
             $this->getHotelFeatures(),
             $this->getStockFeatures(),
-            $this->getTransportFeatures()
+            $this->getTransportFeatures(),
+            $this->getCulinaryFeatures(),
+            $this->getRealEstateFeatures()
         );
 
         foreach ($features as $data) {
@@ -560,6 +562,122 @@ class FeatureSeeder extends Seeder
 
         foreach ($items as $item) {
             $list[] = ['name' => $item, 'type' => 'transport', 'price' => rand(200000, 800000), 'icon' => '🚛'];
+        }
+        return $list;
+    }
+
+    private function getCulinaryFeatures()
+    {
+        // Culinary features
+        $list = [];
+        $items = [
+            'Menu QR Code',
+            'Borne de Commande',
+            'Click & Collect',
+            'Réservation de Table',
+            'Plan de Salle 3D',
+            'KDS (Kitchen Display System)',
+            'Fiches Techniques Recettes',
+            'Calcul Coût Matière',
+            'Gestion Allergènes',
+            'HACCP Digital',
+            'Traçabilité Alimentaire',
+            'Relevé Température Auto',
+            'Etiquetage DLC',
+            'Gestion Gaspillage',
+            'Inventaire Boissons',
+            'Connexion UberEats/Deliveroo',
+            'Impression Cuisine',
+            'Menu Digital Tablette',
+            'Sommelier Virtuel',
+            'Accords Mets-Vins',
+            'Gestion Pourboires Tips',
+            'Partage Addition',
+            ' Paiement à Table',
+            'Ticket Restaurant Digital',
+            'Caisse Tactile iPad',
+            'Statistiques Service',
+            'Planning Cuisine',
+            'Planning Salle',
+            'Gestion Extras',
+            'Formation Hygiène',
+            'Commande Fournisseur',
+            'Réception Marchandise',
+            'Comparateur Prix Ingrédients',
+            'Inventaire Flash',
+            'Rotation Stock FIFO',
+            'Programme Fidélité Resto',
+            'Campagne SMS Midi',
+            'Avis Clients Google',
+            'Site Web Restaurant',
+            'Module Traiteur',
+            'Devis Banquets',
+            'Gestion Mariages',
+            'Facturation Entreprises',
+            'Carte des Vins iPads',
+            'Ecran Appel Client'
+        ];
+
+        foreach ($items as $item) {
+            $list[] = ['name' => $item, 'type' => 'culinary', 'price' => rand(80000, 400000), 'icon' => '🍳'];
+        }
+        return $list;
+    }
+
+    private function getRealEstateFeatures()
+    {
+        // Real Estate features
+        $list = [];
+        $items = [
+            'Gestion Locative',
+            'Syndic Copropriété',
+            'Rapprochement Bancaire',
+            'Quittancement Auto',
+            'Révision Loyer',
+            'Régularisation Charges',
+            'Etat des Lieux Tablette',
+            'Signature Bail Électronique',
+            'Dossier Locataire Numérique',
+            'Scoring Solvabilité',
+            'Espace Locataire',
+            'Espace Propriétaire',
+            'Gestion Tickets Incidents',
+            'Suivi Travaux',
+            'Carnet Entretien Immeuble',
+            'Assemblée Générale Vote',
+            'Visio AG',
+            'Compte Bancaire Séparé',
+            'Facturation Honoraires',
+            'Déclaration Revenus Foncier',
+            'CRM Agent Immobilier',
+            'Pigé Immobilière',
+            'Estimation Bien en Ligne',
+            'Annonces Multi-diffusion',
+            'Passerelle SeLoger/Leboncoin',
+            'Visite Virtuelle 360',
+            'Plan 2D/3D',
+            'Home Staging Virtuel',
+            'Registre des Mandats',
+            'Compromis de Vente',
+            'Suivi Notaire',
+            'Simulateur Prêt Immo',
+            'Calcul Rentabilité Locative',
+            'Carte Prix Marché',
+            'Alertes Nouveaux Biens',
+            'Gestion Clés',
+            'Panneaux Connectés',
+            'Fiche Vitrine QR',
+            'Automobilité Agent',
+            'Statistiques Ventes',
+            'Gestion Prospection',
+            'Boitage Géolocalisé',
+            'Emailing Acquéreurs',
+            'Agenda Partagé Visites',
+            'Feedback Visites'
+        ];
+
+        foreach ($items as $item) {
+            $list[] = ['name' => $item, 'type' => 'real_estate', 'price' => rand(150000, 600000), 'icon' => '🏠'];
         }
         return $list;
     }
