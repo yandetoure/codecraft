@@ -139,16 +139,6 @@ class RolesAndPermissionsSeeder extends Seeder
             'create_appointments',
         ]);
 
-        // Create default super admin user
-        $superAdminUser = User::create([
-            'name' => 'Super Admin',
-            'email' => 'admin@codecraft.com',
-            'password' => Hash::make('password'),
-            'email_verified_at' => now(),
-        ]);
-        $superAdminUser->assignRole('super_admin');
-
         $this->command->info('Roles and permissions created successfully!');
-        $this->command->info('Super Admin created: admin@codecraft.com / password');
     }
 }

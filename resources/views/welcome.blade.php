@@ -58,72 +58,50 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service Card 1 -->
-                <div
-                    class="group p-8 rounded-3xl bg-slate-50 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-300 border border-transparent hover:border-slate-100">
-                    <div
-                        class="h-16 w-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
-                            </path>
-                        </svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Sites Web & E-commerce</h4>
-                    <p class="text-slate-600 leading-relaxed mb-6">Des interfaces ultra-rapides, optimisées SEO et conçues
-                        pour maximiser vos conversions mobiles.</p>
-                    <div class="flex items-center space-x-2 text-primary-600 font-bold text-sm">
-                        <span>Voir plus</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </div>
-                </div>
+                @foreach($services as $service)
+                    @php
+                        // Simple icon mapping based on slug
+                        $iconPath = match ($service->slug) {
+                            'developpement-web' => 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+                            'applications-mobiles' => 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
+                            'design-branding' => 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.357 5.828 7.13L16.828 14.714 11 7.343z',
+                            'marketing-digital' => 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
+                            'consulting-tech' => 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+                            default => 'M13 10V3L4 14h7v7l9-11h-7z',
+                        };
 
-                <!-- Service Card 2 -->
-                <div
-                    class="group p-8 rounded-3xl bg-slate-50 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-300 border border-transparent hover:border-slate-100">
-                    <div
-                        class="h-16 w-16 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">SaaS & Applications Métiers</h4>
-                    <p class="text-slate-600 leading-relaxed mb-6">Plateformes complexes sur-mesure pour automatiser vos
-                        opérations et piloter votre croissance.</p>
-                    <div class="flex items-center space-x-2 text-primary-600 font-bold text-sm">
-                        <span>Voir plus</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </div>
-                </div>
+                        $iconColor = match ($service->slug) {
+                            'developpement-web' => 'text-blue-600 bg-blue-100',
+                            'applications-mobiles' => 'text-amber-600 bg-amber-100',
+                            'design-branding' => 'text-pink-600 bg-pink-100',
+                            'marketing-digital' => 'text-emerald-600 bg-emerald-100',
+                            'consulting-tech' => 'text-violet-600 bg-violet-100',
+                            default => 'text-primary-600 bg-primary-100',
+                        };
+                    @endphp
 
-                <!-- Service Card 3 -->
-                <div
-                    class="group p-8 rounded-3xl bg-slate-50 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-300 border border-transparent hover:border-slate-100">
                     <div
-                        class="h-16 w-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
+                        class="group p-8 rounded-3xl bg-slate-50 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-300 border border-transparent hover:border-slate-100 h-full flex flex-col">
+                        <div
+                            class="h-16 w-16 {{ $iconColor }} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $iconPath }}">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-4">{{ $service->name }}</h4>
+                        <p class="text-slate-600 leading-relaxed mb-6 flex-grow">{{ $service->description }}</p>
+
+                        <a href="{{ route('packs.index') }}#{{ $service->slug }}"
+                            class="flex items-center space-x-2 text-primary-600 font-bold text-sm hover:underline">
+                            <span>Voir les packs</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
                     </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Applications Mobiles Native</h4>
-                    <p class="text-slate-600 leading-relaxed mb-6">Des expériences fluides sur iOS et Android pour rester
-                        connecté à vos clients partout.</p>
-                    <div class="flex items-center space-x-2 text-primary-600 font-bold text-sm">
-                        <span>Voir plus</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@ class Feature extends Model
     // Relationships
     public function packs(): BelongsToMany
     {
-        return $this->belongsToMany(Pack::class)
+        return $this->belongsToMany(Pack::class, 'pack_feature')
             ->withPivot('is_included', 'additional_price')
             ->withTimestamps();
     }

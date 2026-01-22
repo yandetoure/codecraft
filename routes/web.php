@@ -15,10 +15,11 @@ use App\Http\Controllers\Client\AppointmentController as ClientAppointmentContro
 use App\Http\Controllers\Client\PackSelectionController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\WelcomeController;
+
 // Public Routes
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/features', [WelcomeController::class, 'features'])->name('features.index');
 
 // Auth Routes are defined below
 

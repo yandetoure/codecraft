@@ -42,7 +42,7 @@ class Pack extends Model implements HasMedia
 
     public function features(): BelongsToMany
     {
-        return $this->belongsToMany(Feature::class)
+        return $this->belongsToMany(Feature::class, 'pack_feature')
             ->withPivot('is_included', 'additional_price')
             ->withTimestamps();
     }
